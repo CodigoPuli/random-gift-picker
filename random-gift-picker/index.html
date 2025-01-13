@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Gift Picker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        .gift-container {
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .gift-container img {
+            width: 150px;
+            height: 150px;
+            margin: 10px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .gift-container img:hover {
+            transform: scale(1.1);
+            border-color: #555;
+        }
+
+        #randomGift {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Random Gift Picker</h1>
+    <button onclick="pickRandomGift()">Choose a Random Gift</button>
+    <div id="randomGift"></div>
+
+    <div class="gift-container">
+        <!-- Images will be dynamically loaded here -->
+    </div>
+
+    <script>
+        const giftImages = [
+            // Add the file paths for the images
+            'img/auriculares.jpg', // Example
+            'img/camara.jpg', // Example
+            'img/camiseta.jpg',  // Example
+            'img/gorra.jpg', // Example
+            'img/libro.jpg', // Example
+            'img/libro1.jpg',  // Example
+            'img/libro2.jpg', // Example
+            'img/libro3.jpg', // Example
+            'img/libro4.jpg',  // Example
+            'img/ordenador.jpg', // Example
+            'img/regalo.jpg', // Example
+            'img/reloj.jpg',  // Example
+            'img/smartphone.jpg'  // Example
+        ];
+
+        const giftContainer = document.querySelector('.gift-container');
+        const randomGiftDiv = document.getElementById('randomGift');
+
+        // Load images into the container
+        giftImages.forEach(image => {
+            const imgElement = document.createElement('img');
+            imgElement.src = image;
+            imgElement.alt = 'Gift';
+            giftContainer.appendChild(imgElement);
+        });
+
+        // Function to pick a random gift
+        function pickRandomGift() {
+            const randomIndex = Math.floor(Math.random() * giftImages.length);
+            const randomImage = giftImages[randomIndex];
+            randomGiftDiv.innerHTML = `<img src="${randomImage}" alt="Random Gift" style="width: 200px; height: 200px; margin-top: 20px;">`;
+        }
+    </script>
+</body>
+</html>
